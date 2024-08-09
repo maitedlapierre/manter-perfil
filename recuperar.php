@@ -13,8 +13,10 @@ $resultado = executarSQL($conexao, $sql);
 
 $usuario = mysqli_fetch_assoc($resultado);
 if ($usuario === null) {
-    echo "Email não cadastrado! Faça o cadastro e 
-        em seguida realize o login.";
+    echo '<div class= "alert alert danger" role="alert"> 
+    <h2>Email não cadastrado!</h2><br>
+    Faça o cadastro e em seguida realize o login. </div>'
+    ;
     die();
 }
 //gerar um token unico 
@@ -70,13 +72,17 @@ try {
 
 
             $mail ->send();
-            echo 'Email enviado com sucesso!<br> Confira seu e-mail.';
+            echo '<div class= "alert alert-success" role="alert">
+            <h2> Email enviado com sucesso!</h2><br> Confira seu e-mail.
+            </div>';
             date_default_timezone_set('America/Sao_Paulo');
             $data = new DateTime('now');
             $agora = $data ->format('Y-m-d H:i:s');
             $sql2= "INSERT INTO recuperar_senha (email, data_criacao, token, usado) VALUES ('".$usuario['email']."', '$agora', '$token', 0)";
             executarSQL($conexao, $sql2);
 } catch (Exception $e) {
-    echo "Não foi possível enviar o e-mail.
-        Mailer Error: {$mail->ErrorInfo}";
+    echo '<div class= "alert alert-danger" role="alert">
+    <h2> Não foi possível enviar o e-mail.</h2><br>
+     Mailer Error: {$mail->ErrorInfo}
+     </div>';
 }

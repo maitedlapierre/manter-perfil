@@ -1,11 +1,10 @@
 <?php
-$config = [
-    'host' => '',
-    'user' => '',
-    'pass' => '',
-    'db' => '',
-    'email' => '',
-    'senha_email' => ''
-];
 
-?>
+$config = [
+    'host'=> '',
+    'user'=> '',
+    'pass'=> '',
+    'db'=> '',
+    'email'=> '',
+    'senha_email'=>''
+];

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Formulário de Recuperação de Senha</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,13 +30,8 @@
             color: #333;
         }
 
-        .alert {
-            color: #d9534f;
-            background-color: #f2dede;
-            border: 1px solid #ebccd1;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 20px;
+        p {
+            color: #555;
         }
 
         form {
@@ -49,8 +44,7 @@
             color: #333;
         }
 
-        input[type="text"],
-        input[type="password"],
+        input[type="email"],
         input[type="submit"] {
             width: calc(100% - 22px);
             padding: 10px;
@@ -69,42 +63,20 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-            display: block;
-            margin-top: 10px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <?php
-        if (isset($_GET['erro'])) {
-            $erro = $_GET['erro'];
-            if ($erro == 1) {
-                echo '<div class="alert alert-danger" role="alert"><h2>Usuário não encontrado!</h2><br> Usuário ou senha estão incorretos, tente novamente </div>';
-            }
-        }
-        ?>
-        <h1>Login</h1>
-        <form action="teste.php" method="POST">
-            <label for="nome">Insira seu e-mail:</label>
-            <input type="text" name="email" id="nome" required>
-
-            <label for="senha">Insira sua senha:</label>
-            <input type="password" name="senha" id="senha" required>
-
-            <input type="submit" name="submit" value="Enviar">
-
-            <a href="formulario-cadastro.php">Cadastre-se</a>
-            <a href="formulario-senha.php">Recupere sua senha!</a>
+        <h1>Recuperação de Senha</h1>
+        <p>
+            Digite o seu e-mail para que você possa criar uma nova senha.<br>
+            Será enviado um e-mail com um link de recuperação que você usará para criar uma nova senha.
+        </p>
+        <form action="recuperar.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <input type="submit" value="Enviar e-mail de recuperação">
         </form>
     </div>
 </body>
